@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .scrollable {
+            max-height: 80vh;
+            overflow-y: scroll;
+        }
+        .refresh-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 20px 0;
+        }
+        .refresh-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reddit Comments Analysis Visualizations</h1>
+        <a href="{{ url_for('post_analysis') }}" class="refresh-button">Refresh Visualizations</a>
+        <div class="scrollable">
+            <div class="image-container">
+                <div class="caption">Word Cloud of Most Frequent Words:</div>
+                <img src="{{ url_for('image', image_name='wordcloud.png') }}" alt="Word Cloud" onerror="this.onerror=null;this.src='path/to/placeholder.png';">
+            </div>
+            <div class="image-container">
+                <div class="caption">Distribution of Sentiment Scores:</div>
+                <img src="{{ url_for('image', image_name='sentiment_histogram.png') }}" alt="Sentiment Histogram" onerror="this.onerror=null;this.src='path/to/placeholder.png';">
+            </div>
+            <div class="image-container">
+                <div class="caption">Sentiment Category Distribution:</div>
+                <img src="{{ url_for('image', image_name='sentiment_bar.png') }}" alt="Sentiment Bar Chart" onerror="this.onerror=null;this.src='path/to/placeholder.png';">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

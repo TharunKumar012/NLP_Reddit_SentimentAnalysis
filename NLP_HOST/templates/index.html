@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Comments Analysis</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Extract and Analyze Reddit Comments</h1>
+        <form action="{{ url_for('extract_comments') }}" method="POST">
+            <label for="post_url">Reddit Post URL:</label>
+            <input type="text" id="post_url" name="post_url" required>
+            <button type="submit">Extract Comments</button>
+        </form>
+        {% if message %}
+        <p>{{ message }}</p>
+        <form action="{{ url_for('post_analysis') }}" method="POST">
+            <button type="submit">Post Analysis</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>
